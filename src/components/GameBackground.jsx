@@ -15,19 +15,20 @@ const GameBackground = () => {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
-    // Create particles
-    const particleCount = 80
+    // Create larger, brighter particles
+    const particleCount = 60
     particlesRef.current = Array.from({ length: particleCount }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.8,
-      vy: (Math.random() - 0.5) * 0.8,
-      size: Math.random() * 2 + 1,
-      opacity: Math.random() * 0.4 + 0.2,
+      vx: (Math.random() - 0.5) * 1.2,
+      vy: (Math.random() - 0.5) * 1.2,
+      size: Math.random() * 8 + 4, // Larger particles: 4-12px
+      opacity: Math.random() * 0.5 + 0.5, // Brighter: 0.5-1.0
+      glow: Math.random() * 0.3 + 0.2, // Glow effect
     }))
 
-    // Create 3D wireframe cubes
-    const cubeCount = 8
+    // Create 3D wireframe cubes and game objects
+    const cubeCount = 12
     cubesRef.current = Array.from({ length: cubeCount }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -35,10 +36,12 @@ const GameBackground = () => {
       rotationX: Math.random() * Math.PI * 2,
       rotationY: Math.random() * Math.PI * 2,
       rotationZ: Math.random() * Math.PI * 2,
-      rotationSpeedX: (Math.random() - 0.5) * 0.02,
-      rotationSpeedY: (Math.random() - 0.5) * 0.02,
-      rotationSpeedZ: (Math.random() - 0.5) * 0.02,
-      size: 30 + Math.random() * 40,
+      rotationSpeedX: (Math.random() - 0.5) * 0.03,
+      rotationSpeedY: (Math.random() - 0.5) * 0.03,
+      rotationSpeedZ: (Math.random() - 0.5) * 0.03,
+      size: 40 + Math.random() * 60, // Larger cubes
+      type: Math.random() > 0.5 ? 'cube' : Math.random() > 0.5 ? 'sphere' : 'pyramid',
+      brightness: Math.random() * 0.4 + 0.4, // Brighter
     }))
 
     // 3D projection helper
@@ -82,19 +85,40 @@ const GameBackground = () => {
       }
     }
 
-    // Draw 3D wireframe cube
+    // Draw 3D wireframe shapes (cube, sphere, pyramid)
     const drawCube = (cube) => {
       const size = cube.size
-      const vertices = [
-        [-size, -size, -size],
-        [size, -size, -size],
-        [size, size, -size],
-        [-size, size, -size],
-        [-size, -size, size],
-        [size, -size, size],
-        [size, size, size],
-        [-size, size, size]
-      ]
+      let vertices = []
+      
+      if (cube.type === 'cube') {
+        vertices = [
+          [-size, -size, -size],
+          [size, -size, -size],
+          [size, size, -size],
+          [-size, size, -size],
+          [-size, -size, size],
+          [size, -size, size],
+          [size, size, size],
+          [-size, size, size]
+        ]
+      } else if (cube.type === 'pyramid') {
+        vertices = [
+          [0, -size, 0], // Top
+          [-size, size, -size], // Base corner 1
+          [size, size, -size], // Base corner 2
+          [size, size, size], // Base corner 3
+          [-size, size, size] // Base corner 4
+        ]
+      } else { // sphere approximation with octahedron
+        vertices = [
+          [0, -size, 0], // Top
+          [size, 0, 0], // Right
+          [0, 0, size], // Front
+          [-size, 0, 0], // Left
+          [0, 0, -size], // Back
+          [0, size, 0] // Bottom
+        ]
+      }
 
       // Rotate vertices
       const rotatedVertices = vertices.map(([x, y, z]) => {
@@ -108,15 +132,29 @@ const GameBackground = () => {
         )
       })
 
-      // Draw edges
-      const edges = [
-        [0, 1], [1, 2], [2, 3], [3, 0], // front face
-        [4, 5], [5, 6], [6, 7], [7, 4], // back face
-        [0, 4], [1, 5], [2, 6], [3, 7] // connecting edges
-      ]
+      // Draw edges based on shape type
+      let edges = []
+      if (cube.type === 'cube') {
+        edges = [
+          [0, 1], [1, 2], [2, 3], [3, 0], // front face
+          [4, 5], [5, 6], [6, 7], [7, 4], // back face
+          [0, 4], [1, 5], [2, 6], [3, 7] // connecting edges
+        ]
+      } else if (cube.type === 'pyramid') {
+        edges = [
+          [0, 1], [0, 2], [0, 3], [0, 4], // Top to base
+          [1, 2], [2, 3], [3, 4], [4, 1] // Base square
+        ]
+      } else { // sphere/octahedron
+        edges = [
+          [0, 1], [0, 2], [0, 3], [0, 4], // Top to middle
+          [5, 1], [5, 2], [5, 3], [5, 4], // Bottom to middle
+          [1, 2], [2, 3], [3, 4], [4, 1] // Middle ring
+        ]
+      }
 
-      ctx.strokeStyle = `rgba(74, 158, 255, ${0.3 * (1 - cube.z / 1000)})`
-      ctx.lineWidth = 1
+      ctx.strokeStyle = `rgba(74, 158, 255, ${cube.brightness * (1 - cube.z / 1000)})`
+      ctx.lineWidth = 2
 
       edges.forEach(([start, end]) => {
         const v1 = rotatedVertices[start]
@@ -145,26 +183,40 @@ const GameBackground = () => {
         if (particle.y < 0) particle.y = canvas.height
         if (particle.y > canvas.height) particle.y = 0
 
-        // Draw particle
+        // Draw particle with glow effect
+        const gradient = ctx.createRadialGradient(
+          particle.x, particle.y, 0,
+          particle.x, particle.y, particle.size * 2
+        )
+        gradient.addColorStop(0, `rgba(74, 158, 255, ${particle.opacity})`)
+        gradient.addColorStop(0.5, `rgba(124, 58, 237, ${particle.opacity * 0.6})`)
+        gradient.addColorStop(1, `rgba(74, 158, 255, 0)`)
+        
+        ctx.beginPath()
+        ctx.arc(particle.x, particle.y, particle.size * 2, 0, Math.PI * 2)
+        ctx.fillStyle = gradient
+        ctx.fill()
+        
+        // Core particle
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(74, 158, 255, ${particle.opacity})`
         ctx.fill()
       })
 
-      // Draw connections between particles
+      // Draw brighter connections between particles
       particlesRef.current.forEach((p1, i) => {
         particlesRef.current.slice(i + 1).forEach((p2) => {
           const dx = p1.x - p2.x
           const dy = p1.y - p2.y
           const distance = Math.sqrt(dx * dx + dy * dy)
 
-          if (distance < 120) {
+          if (distance < 150) {
             ctx.beginPath()
             ctx.moveTo(p1.x, p1.y)
             ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(74, 158, 255, ${0.15 * (1 - distance / 120)})`
-            ctx.lineWidth = 0.5
+            ctx.strokeStyle = `rgba(74, 158, 255, ${0.3 * (1 - distance / 150)})`
+            ctx.lineWidth = 1.5
             ctx.stroke()
           }
         })
@@ -214,7 +266,7 @@ const GameBackground = () => {
       <canvas
         ref={canvasRef}
         className="fixed inset-0 pointer-events-none"
-        style={{ zIndex: 0, opacity: 0.6 }}
+        style={{ zIndex: 0, opacity: 0.8 }}
       />
       {/* Enhanced 3D Grid Effect */}
       <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 0 }}>
@@ -222,34 +274,58 @@ const GameBackground = () => {
           <div className="grid-pattern"></div>
         </div>
       </div>
-      {/* 2D Sprite-like floating elements */}
+      {/* Game Character Elements & 3D Objects */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        {[...Array(6)].map((_, i) => (
+        {/* Game character emojis/symbols */}
+        {['🎮', '🦀', '⚔️', '🛡️', '🎯', '💎', '🔥', '⚡'].map((emoji, i) => (
           <div
-            key={i}
-            className="absolute border border-cyber-purple opacity-15 animate-float"
+            key={`char-${i}`}
+            className="absolute text-4xl md:text-5xl animate-float opacity-40"
             style={{
-              width: `${20 + i * 5}px`,
-              height: `${20 + i * 5}px`,
-              left: `${10 + i * 15}%`,
-              top: `${20 + i * 10}%`,
-              animationDelay: `${i * 0.5}s`,
-              animationDuration: `${8 + i * 2}s`,
-              transform: `rotate(${i * 45}deg)`,
+              left: `${5 + i * 12}%`,
+              top: `${10 + (i % 3) * 30}%`,
+              animationDelay: `${i * 0.8}s`,
+              animationDuration: `${10 + i * 2}s`,
+              filter: 'drop-shadow(0 0 10px rgba(74, 158, 255, 0.5))',
+            }}
+          >
+            {emoji}
+          </div>
+        ))}
+        
+        {/* Larger 3D geometric shapes */}
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={`shape-${i}`}
+            className="absolute border-2 border-cyber-cyan opacity-30 animate-float"
+            style={{
+              width: `${30 + i * 8}px`,
+              height: `${30 + i * 8}px`,
+              left: `${15 + i * 10}%`,
+              top: `${25 + (i % 2) * 40}%`,
+              animationDelay: `${i * 0.6}s`,
+              animationDuration: `${12 + i * 3}s`,
+              transform: `rotate(${i * 30}deg)`,
+              boxShadow: '0 0 20px rgba(74, 158, 255, 0.4)',
             }}
           />
         ))}
-        {[...Array(4)].map((_, i) => (
+        
+        {/* Game-themed symbols */}
+        {[...Array(6)].map((_, i) => (
           <div
-            key={`poly-${i}`}
-            className="absolute border border-cyber-cyan opacity-10 animate-rotate-3d"
+            key={`symbol-${i}`}
+            className="absolute border-2 border-cyber-purple opacity-25 animate-rotate-3d"
             style={{
-              width: `${15 + i * 8}px`,
-              height: `${15 + i * 8}px`,
-              left: `${70 + i * 8}%`,
-              top: `${30 + i * 15}%`,
-              animationDelay: `${i * 1.2}s`,
-              clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
+              width: `${25 + i * 6}px`,
+              height: `${25 + i * 6}px`,
+              left: `${60 + i * 7}%`,
+              top: `${20 + i * 12}%`,
+              animationDelay: `${i * 1.5}s`,
+              clipPath: i % 2 === 0 
+                ? 'polygon(50% 0%, 0% 100%, 100% 100%)' 
+                : 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)',
+              boxShadow: '0 0 15px rgba(124, 58, 237, 0.3)',
             }}
           />
         ))}

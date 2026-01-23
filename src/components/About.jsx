@@ -11,26 +11,38 @@ const About = () => {
 
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6">
-            <div className="bg-black/40 border border-cyber-cyan p-6 rounded-lg backdrop-blur-sm hover:border-cyber-pink transition-all duration-300">
-              <h3 className="text-2xl font-bold text-cyber-pink mb-4">Experience</h3>
+            <div className="bg-black/40 border-2 border-cyber-pink p-6 rounded-lg backdrop-blur-sm hover:border-cyber-cyan transition-all duration-300">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-2xl font-bold text-cyber-pink">Game Developer</h3>
+                <span className="px-3 py-1 bg-cyber-pink/20 border border-cyber-pink text-cyber-pink rounded text-sm font-bold">PRIMARY ROLE</span>
+              </div>
+              <p className="text-cyber-cyan/80 leading-relaxed mb-3">
+                With over <span className="text-cyber-green font-bold">10+ years</span> of experience, 
+                <span className="text-cyber-pink font-bold"> game development is my core passion and primary expertise</span>. 
+                I've built everything from indie games to large-scale MMO projects, specializing in both 
+                <span className="text-cyber-green"> 3D</span> and <span className="text-cyber-green"> 2D</span> game development.
+              </p>
               <p className="text-cyber-cyan/80 leading-relaxed">
-                With over <span className="text-cyber-green font-bold">10+ years</span> of experience in software engineering, 
-                I've specialized in game development and have transitioned into the Web3 era, building immersive metaverse experiences 
-                and integrating blockchain technologies into gaming projects.
+                Extensive experience with <span className="text-cyber-green">Unity</span>, 
+                <span className="text-cyber-green"> Unreal Engine</span>, <span className="text-cyber-green">Ogre3D</span>, 
+                and <span className="text-cyber-green">Godot</span>. From gameplay mechanics to rendering pipelines, 
+                I bring games to life across multiple platforms.
               </p>
             </div>
 
-            <div className="bg-black/40 border border-cyber-purple p-6 rounded-lg backdrop-blur-sm hover:border-cyber-cyan transition-all duration-300">
-              <h3 className="text-2xl font-bold text-cyber-purple mb-4">Game Development</h3>
+            <div className="bg-black/40 border-2 border-cyber-cyan p-6 rounded-lg backdrop-blur-sm hover:border-cyber-purple transition-all duration-300">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-2xl font-bold text-cyber-cyan">🦀 Rustacean</h3>
+                <span className="px-3 py-1 bg-cyber-cyan/20 border border-cyber-cyan text-cyber-cyan rounded text-sm font-bold">RUST EXPERT</span>
+              </div>
               <p className="text-cyber-cyan/80 leading-relaxed mb-3">
-                Extensive experience with major game engines including <span className="text-cyber-green">Unity</span>, 
-                <span className="text-cyber-green"> Unreal Engine</span>, <span className="text-cyber-green">Ogre3D</span>, 
-                and <span className="text-cyber-green">Godot</span>. From indie projects to large-scale MMO games, 
-                I've built engaging gameplay experiences across multiple platforms.
+                <span className="text-cyber-cyan font-bold">Rust is my language of choice</span> for systems programming, 
+                game engines, and high-performance applications. I leverage Rust's memory safety, zero-cost abstractions, 
+                and concurrency features to build robust and efficient game systems.
               </p>
               <p className="text-cyber-green font-semibold">
-                Strong expertise in <span className="text-cyber-cyan">3D</span> and <span className="text-cyber-cyan">2D</span> game development, 
-                including 3D modeling, rendering, physics, animation systems, and 2D sprite-based gameplay.
+                Building game servers, engine components, and performance-critical systems with Rust's powerful type system 
+                and fearless concurrency.
               </p>
             </div>
 
@@ -60,15 +72,35 @@ const About = () => {
               </p>
             </div>
 
+            <div className="bg-black/40 border-2 border-cyber-purple p-6 rounded-lg backdrop-blur-sm hover:border-cyber-pink transition-all duration-300">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-2xl font-bold text-cyber-purple">🤖 AI-Powered Workflow</h3>
+                <span className="px-3 py-1 bg-cyber-purple/20 border border-cyber-purple text-cyber-purple rounded text-sm font-bold">AI EXPERT</span>
+              </div>
+              <p className="text-cyber-cyan/80 leading-relaxed mb-3">
+                <span className="text-cyber-purple font-bold">I leverage AI tools effectively</span> to boost productivity, 
+                accelerate development, and solve complex problems. From code generation and refactoring to game design 
+                assistance and debugging, AI is an integral part of my workflow.
+              </p>
+              <p className="text-cyber-green font-semibold">
+                Using AI to enhance game development, automate repetitive tasks, generate creative solutions, 
+                and maintain high code quality while delivering faster results.
+              </p>
+            </div>
+
             <div className="bg-black/40 border border-cyber-cyan p-6 rounded-lg backdrop-blur-sm hover:border-cyber-purple transition-all duration-300">
               <h3 className="text-2xl font-bold text-cyber-cyan mb-4">Programming Languages</h3>
               <div className="flex flex-wrap gap-3">
                 {['C++', 'C#', 'Rust', 'Python', 'JavaScript'].map((lang) => (
                   <span
                     key={lang}
-                    className="px-4 py-2 bg-black/60 border border-cyber-cyan text-cyber-cyan rounded-lg hover:border-cyber-pink hover:text-cyber-pink transition-all duration-300"
+                    className={`px-4 py-2 bg-black/60 border-2 rounded-lg transition-all duration-300 ${
+                      lang === 'Rust' 
+                        ? 'border-cyber-cyan text-cyber-cyan font-bold hover:border-cyber-pink hover:text-cyber-pink scale-110' 
+                        : 'border-cyber-cyan text-cyber-cyan hover:border-cyber-pink hover:text-cyber-pink'
+                    }`}
                   >
-                    {lang}
+                    {lang === 'Rust' ? '🦀 Rust' : lang}
                   </span>
                 ))}
               </div>

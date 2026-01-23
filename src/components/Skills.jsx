@@ -15,7 +15,12 @@ const Skills = () => {
     {
       title: 'Languages',
       color: 'purple',
-      skills: ['C++', 'C#', 'Rust', 'Python', 'JavaScript']
+      skills: ['🦀 Rust (Expert)', 'C++', 'C#', 'Python', 'JavaScript']
+    },
+    {
+      title: 'AI & Productivity',
+      color: 'cyan',
+      skills: ['AI-Assisted Development', 'Code Generation', 'Automation', 'AI Tools Integration']
     },
     {
       title: 'Specializations',

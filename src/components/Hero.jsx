@@ -20,17 +20,31 @@ const Hero = () => {
         </div>
         
         <div className="mb-8">
-          <p className="text-xl sm:text-2xl md:text-3xl text-cyber-cyan font-bold mb-2">
-            SOFTWARE ENGINEER
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-cyber-pink font-black mb-3 text-cyber-glow">
+            GAME DEVELOPER
           </p>
-          <p className="text-lg sm:text-xl text-cyber-green">
+          <p className="text-lg sm:text-xl md:text-2xl text-cyber-cyan font-bold mb-3">
+            Rustacean • AI-Powered Workflow
+          </p>
+          <p className="text-base sm:text-lg text-cyber-green">
             10+ Years of Experience
           </p>
         </div>
 
         <div className="mb-8">
+          <div className="flex flex-wrap justify-center gap-3 mb-4">
+            <span className="px-4 py-2 bg-black/60 border-2 border-cyber-pink text-cyber-pink rounded-lg font-bold text-sm sm:text-base">
+              🎮 Game Developer
+            </span>
+            <span className="px-4 py-2 bg-black/60 border-2 border-cyber-cyan text-cyber-cyan rounded-lg font-bold text-sm sm:text-base">
+              🦀 Rustacean
+            </span>
+            <span className="px-4 py-2 bg-black/60 border-2 border-cyber-purple text-cyber-purple rounded-lg font-bold text-sm sm:text-base">
+              🤖 AI-Enhanced
+            </span>
+          </div>
           <p className="text-base sm:text-lg md:text-xl text-cyber-cyan/80 max-w-3xl mx-auto leading-relaxed">
-            Game Developer • Web3 Builder • Metaverse Creator
+            Specializing in game development with Rust expertise and leveraging AI to accelerate productivity and innovation
           </p>
           <p className="text-sm sm:text-base text-cyber-pink/80 mt-2">
             Denver, Colorado

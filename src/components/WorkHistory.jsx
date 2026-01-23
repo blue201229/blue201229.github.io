@@ -5,21 +5,29 @@ const WorkHistory = () => {
   const workHistory = [
     {
       period: '2022 - Present',
-      title: 'Freelancer',
+      title: 'Game Developer (Freelancer)',
       company: 'Independent',
       icon: <FaLaptopCode />,
-      description: 'Working as a freelance software engineer, specializing in game development, Web3 integration, and metaverse projects. Collaborating with various clients to build innovative gaming experiences and blockchain-based solutions.',
+      description: (
+        <>
+          Working as a freelance <span className="text-cyber-pink font-bold">Game Developer</span>, specializing in game development with <span className="text-cyber-cyan font-bold">Rust</span> expertise and <span className="text-cyber-purple font-bold">AI-powered workflows</span>. Building innovative gaming experiences, Web3 integration, and metaverse projects. Leveraging AI tools to accelerate development and deliver high-quality games faster.
+        </>
+      ),
       color: 'cyan',
-      technologies: ['Unity', 'Unreal', 'Web3', 'Blockchain', 'Game Development']
+      technologies: ['Game Development', 'Rust', 'Unity', 'Unreal', 'AI Tools', 'Web3']
     },
     {
       period: 'Before 2022',
       title: 'Game Developer',
       company: 'Indie Game Company',
       icon: <FaBriefcase />,
-      description: 'Developed games at an indie game company, working on various projects including 2D and 3D games. Contributed to game design, programming, and technical implementation using multiple game engines.',
+      description: (
+        <>
+          Developed games at an indie game company, working on various <span className="text-cyber-green font-bold">2D and 3D game projects</span>. Contributed to game design, programming, and technical implementation using multiple game engines. Built core gameplay systems and engine components.
+        </>
+      ),
       color: 'purple',
-      technologies: ['Unity', 'Unreal Engine', 'C++', 'C#', 'Game Design']
+      technologies: ['Game Development', 'Unity', 'Unreal Engine', 'C++', 'C#', 'Game Design']
     }
   ]
 
