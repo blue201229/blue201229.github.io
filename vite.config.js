@@ -1,13 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
+// Get repository name from environment or use default
+// For GitHub Pages: if repo is "username.github.io", use base: '/'
+// Otherwise, use base: '/repo-name/'
+const repoName = process.env.VITE_REPO_NAME || 'portfolio'
+
 export default defineConfig({
   plugins: [react()],
-  // Update this to match your GitHub repository name
-  // If repo is "username.github.io", use base: '/'
-  // If repo is "portfolio", use base: '/portfolio/'
-  base: process.env.NODE_ENV === 'production' ? '/portfolio/' : '/',
+  base: process.env.NODE_ENV === 'production' 
+    ? (repoName === 'blue201229.github.io' ? '/' : `/${repoName}/`)
+    : '/',
   server: {
     host: true,
     port: 5173,
