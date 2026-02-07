@@ -4,9 +4,20 @@ import { FaGraduationCap } from 'react-icons/fa'
 const Education = () => {
   const education = [
     {
-      year: '2012',
-      degree: 'University Graduate',
-      description: 'Completed degree program, laying the foundation for a career in software engineering and game development.',
+      year: '2012 ~ 2013',
+      degree: 'Master of Science in Information Technology',
+      university: 'The Hong Kong Polytechnic University',
+      specialization: 'Computer Graphics',
+      gpa: 'GPA 3.6',
+      description: 'Completed Master of Science in Information Technology with specialization in Computer Graphics. Achieved Academic Excellence with GPA 3.6.',
+    },
+    {
+      year: '2007 ~ 2011',
+      degree: 'Bachelor of Science in Computing',
+      university: 'The Hong Kong Polytechnic University (PolyU)',
+      specialization: 'Work-Integrated Education (WIE)',
+      gpa: null,
+      description: 'Completed Bachelor of Science in Computing. Completed a 6-month internship at MadHead, working on prototyping mobile games using Unity.',
     }
   ]
 
@@ -40,6 +51,17 @@ const Education = () => {
                       <span className="text-metal-gold font-bold text-lg">{item.year}</span>
                     </div>
                     <h3 className="text-xl font-bold text-metal-silver mb-2">{item.degree}</h3>
+                    <p className="text-metal-gold/90 mb-2 font-semibold">{item.university}</p>
+                    {item.specialization && (
+                      <p className="text-metal-bronze/90 mb-1 text-sm font-medium">
+                        Specialization: {item.specialization}
+                      </p>
+                    )}
+                    {item.gpa && (
+                      <p className="text-metal-copper/90 mb-2 text-sm font-medium">
+                        Academic Excellence: {item.gpa}
+                      </p>
+                    )}
                     <p className="text-metal-silver/80 leading-relaxed">{item.description}</p>
                   </div>
                 </div>

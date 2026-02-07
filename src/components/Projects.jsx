@@ -6,6 +6,7 @@ const Projects = () => {
   const [slideshowVisible, setSlideshowVisible] = useState({})
   const [currentSlides, setCurrentSlides] = useState({})
   const [videoModal, setVideoModal] = useState({ open: false, project: null })
+  const [activeField, setActiveField] = useState('All')
 
   const projects = useMemo(() => [
     {
@@ -22,10 +23,30 @@ const Projects = () => {
         '/fps/Screenshot 2026-02-07 125143.png',
         '/fps/Screenshot 2026-02-07 130001.png'
       ],
-      videoUrl: 'https://drive.google.com/file/d/1oiGMjs5NNB3fu8tLhysb8QE56sKadOJW/view?usp=sharing'
+      videoUrl: 'https://drive.google.com/file/d/1oiGMjs5NNB3fu8tLhysb8QE56sKadOJW/view?usp=sharing',
+      fields: ['Game', 'Side-Project']
     },
     {
-      title: 'Mobile MMORPG',
+      title: 'Fellow-Moon',
+      type: 'Turn-Based Game',
+      description: 'Fellow Moon is an exploration and strategy game that incorporates RPG mechanics, offering exciting battles within a captivating storyline.',
+      link: null,
+      icon: <FaGamepad />,
+      color: 'gold',
+      tags: ['Unity', 'Turn-Based', 'Strategy'],
+      hasSlideshow: true,
+      slides: [
+        '/fellow-moon/1.webp',
+        '/fellow-moon/2.webp',
+        '/fellow-moon/3.webp',
+        '/fellow-moon/4.webp',
+        '/fellow-moon/5.webp'
+      ],
+      videoUrl: null,
+      fields: ['Game', 'Professional']
+    },
+    {
+      title: 'Tianzhijin',
       type: 'Mobile Game',
       description: 'A full-featured mobile MMORPG with video documentation showcasing gameplay, character progression, and multiplayer features.',
       link: 'https://drive.google.com/file/d/1A6kkK1MPdfeGxyZIzHRCP5ZzLJpdQQYX/view?usp=drive_link',
@@ -40,7 +61,8 @@ const Projects = () => {
         '/hall.png',
         '/battle.png'
       ],
-      videoUrl: 'https://drive.google.com/file/d/1A6kkK1MPdfeGxyZIzHRCP5ZzLJpdQQYX/view?usp=drive_link'
+      videoUrl: 'https://drive.google.com/file/d/1A6kkK1MPdfeGxyZIzHRCP5ZzLJpdQQYX/view?usp=drive_link',
+      fields: ['Game', 'Outsourcing']
     },
     {
       title: 'Survival Project',
@@ -56,18 +78,51 @@ const Projects = () => {
         '/survival/Screenshot 2026-02-07 044422.png',
         '/survival/Screenshot 2026-02-07 044616.png'
       ],
-      videoUrl: 'https://drive.google.com/file/d/1s8JlVIr7fWQpaOrZKwyMIVrGvbmKqKjH/view?usp=sharing'
+      videoUrl: 'https://drive.google.com/file/d/1s8JlVIr7fWQpaOrZKwyMIVrGvbmKqKjH/view?usp=sharing',
+      fields: ['Game', 'Side-Project']
     },
     {
-      title: 'InfinityMU Private Server',
-      type: 'Game Server',
-      description: 'Participated in operating and customizing a private game server, managing server infrastructure, gameplay mechanics, and player experience.',
-      link: 'https://www.infinitymu.net/',
-      icon: <FaServer />,
+      title: 'Relics of Gods',
+      type: 'Mobile MOBA',
+      description: 'Relics of Gods is a 3v3 turn-based strategy MOBA for mobile, featuring Western high fantasy themes where players control three heroes to secure divine relics, combat Chaos, and battle other "Scions". The game, which released in 2015, focuses on team-based, timed, and fair-to-play competitive combat.',
+      link: null,
+      icon: <FaGamepad />,
       color: 'gold',
-      tags: ['Server Management', 'Game Customization', 'Operations']
+      tags: ['Unreal Engine', 'Mobile', 'MOBA', 'Turn-Based', 'Strategy'],
+      hasSlideshow: true,
+      slides: [
+        '/relicofgods/1.jpg'
+      ],
+      videoUrl: null,
+      fields: ['Game', 'Professional']
+    },
+    {
+      title: 'Goddess of Genesis',
+      type: 'Mobile RPG',
+      description: 'Goddess of Genesis is a 3D turn-based mobile RPG featuring anime-style graphics and hero-collector mechanics. It focuses on summoning, upgrading legendary figures using tarot cards, and engaging in tactical combat.',
+      link: 'https://www.zlongame.com/',
+      icon: <FaGamepad />,
+      color: 'bronze',
+      tags: ['Unity', 'Mobile', 'RPG', 'Turn-Based', '3D'],
+      hasSlideshow: true,
+      slides: [
+        '/goddess/1.jpg',
+        '/goddess/2.jpg',
+        '/goddess/3.jpg'
+      ],
+      videoUrl: null,
+      fields: ['Game', 'Professional']
     }
   ], [])
+
+  const fields = ['All', 'Game', 'Web3', 'AI', 'Professional', 'Side-Project', 'Outsourcing']
+  
+  const filteredProjects = useMemo(() => {
+    if (activeField === 'All') {
+      return projects
+    }
+    return projects.filter(project => project.fields && project.fields.includes(activeField))
+  }, [projects, activeField])
 
   // Initialize slideshow states
   useEffect(() => {
@@ -175,8 +230,25 @@ const Projects = () => {
           <span className="text-metal-silver text-metal-glow"> PROJECTS</span>
         </h2>
 
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
+          {fields.map((field) => (
+            <button
+              key={field}
+              onClick={() => setActiveField(field)}
+              className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
+                activeField === field
+                  ? 'bg-metal-gold/20 border-2 border-metal-gold text-metal-gold'
+                  : 'bg-black/40 border border-metal-silver/30 text-metal-silver/80 hover:border-metal-gold hover:text-metal-gold'
+              }`}
+            >
+              {field}
+            </button>
+          ))}
+        </div>
+
         <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => {
+          {filteredProjects.map((project, index) => {
             const colors = getColorClasses(project.color)
             const Component = project.hasSlideshow ? 'div' : 'a'
             const props = project.hasSlideshow 

@@ -16,10 +16,10 @@ const Navigation = () => {
   const navItems = [
     { name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
-    { name: 'Education', href: '#education' },
-    { name: 'Experience', href: '#work-history' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Experience', href: '#work-history' },
+    { name: 'Education', href: '#education' },
     { name: 'Contact', href: '#contact' },
   ]
 

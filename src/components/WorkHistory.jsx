@@ -4,30 +4,64 @@ import { FaBriefcase, FaLaptopCode } from 'react-icons/fa'
 const WorkHistory = () => {
   const workHistory = [
     {
-      period: '2022 - Present',
-      title: 'Game Developer (Freelancer)',
-      company: 'Independent',
+      period: '2024 - Present',
+      title: 'Independent Game Architect & Consultant',
+      company: 'Self-Employed',
       icon: <FaLaptopCode />,
       description: (
         <>
-          Working as a freelance <span className="text-metal-bronze font-bold">Game Developer</span>, specializing in game development with <span className="text-metal-silver font-bold">Rust</span> expertise and <span className="text-metal-gold font-bold">AI-powered workflows</span>. Building innovative gaming experiences, Web3 integration, and metaverse projects. Leveraging AI tools to accelerate development and deliver high-quality games faster.
+          <span className="text-metal-bronze font-bold">Rust-Powered Systems:</span> Engineering high-performance game backends using Rust, focusing on memory safety and concurrency for Web3 and Metaverse infrastructures.<br/><br/>
+          <span className="text-metal-gold font-bold">AI-Driven Pipelines:</span> Architecting proprietary workflows using Generative AI (LLMs/Stable Diffusion) to reduce asset production cycles by 40% and accelerate rapid prototyping in Unity and Unreal Engine 5.<br/><br/>
+          <span className="text-metal-silver font-bold">Web3 Integration:</span> Designing decentralized gaming economies and smart contract interactions for next-generation virtual environments.
         </>
       ),
       color: 'cyan',
-      technologies: ['Game Development', 'Rust', 'Unity', 'Unreal', 'AI Tools', 'Web3']
+      technologies: ['Game Development', 'Rust', 'Unity', 'Unreal Engine 5', 'AI Tools', 'Web3', 'LLMs']
     },
     {
-      period: 'Before 2022',
+      period: '2021 ~ 2023',
       title: 'Game Developer',
-      company: 'Indie Game Company',
+      company: 'Zhuxin Network (China)',
       icon: <FaBriefcase />,
       description: (
         <>
-          Developed games at an indie game company, working on various <span className="text-metal-copper font-bold">2D and 3D game projects</span>. Contributed to game design, programming, and technical implementation using multiple game engines. Built core gameplay systems and engine components.
+          <span className="text-metal-gold font-bold">Project: Fellow Moon (Unity):</span> Spearheaded the implementation of core gameplay mechanics and optimized C# scripts for complex combat systems in a high-fidelity stylized environment.<br/><br/>
+          <span className="text-metal-bronze font-bold">Technical Problem Solving:</span> Resolved critical performance bottlenecks during the 2022-2023 development phase, ensuring stable frame rates across mid-to-high-range mobile devices.<br/><br/>
+          <span className="text-metal-silver font-bold">Cross-Functional Collaboration:</span> Partnered with artists and designers to bridge technical constraints with creative vision using custom Unity Editor tools.
         </>
       ),
       color: 'purple',
-      technologies: ['Game Development', 'Unity', 'Unreal Engine', 'C++', 'C#', 'Game Design']
+      technologies: ['Game Development', 'Unity', 'C#', 'Performance Optimization', 'Unity Editor Tools']
+    },
+    {
+      period: '2017 ~ 2021',
+      title: 'Unity Game Developer',
+      company: 'Zlongame (China)',
+      icon: <FaBriefcase />,
+      description: (
+        <>
+          <span className="text-metal-gold font-bold">Project: Goddess of Genesis (Unity):</span> Key developer for this top-grossing mobile RPG; engineered robust skill systems and turn-based combat logic.<br/><br/>
+          <span className="text-metal-bronze font-bold">Live-Ops Excellence:</span> Maintained and scaled technical solutions during the game's peak global rollout, contributing to its success across East Asian and SEA markets.<br/><br/>
+          <span className="text-metal-silver font-bold">Architecture:</span> Developed modular UI frameworks and data-driven character systems to support rapid content updates and localized releases.
+        </>
+      ),
+      color: 'purple',
+      technologies: ['Game Development', 'Unity', 'Mobile', 'RPG', 'C#', 'Live-Ops', 'UI Frameworks']
+    },
+    {
+      period: '2013 ~ 2017',
+      title: 'Unreal Game Developer',
+      company: 'SeaSun (Kingsoft - China)',
+      icon: <FaBriefcase />,
+      description: (
+        <>
+          <span className="text-metal-gold font-bold">Project: Relics of Gods (Unreal Engine):</span> Leveraged C++ and Unreal Engine to build high-performance 3D gameplay features for a cross-platform title.<br/><br/>
+          <span className="text-metal-bronze font-bold">Engine Mastery:</span> Integrated advanced shader effects and physics-based interactions, pushing the visual boundaries of mobile gaming during the early Unreal mobile era.<br/><br/>
+          <span className="text-metal-silver font-bold">Lifecycle Contribution:</span> Participated in the full development lifecycle, from initial prototype to large-scale beta testing and regional deployment.
+        </>
+      ),
+      color: 'purple',
+      technologies: ['Game Development', 'Unreal Engine', 'C++', '3D Graphics', 'Shaders', 'Physics']
     }
   ]
 

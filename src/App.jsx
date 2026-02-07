@@ -15,16 +15,16 @@ function App() {
       <GameBackground />
       {/* Additional floating elements removed for a cleaner, more professional look */}
       
-      <div className="relative" style={{ zIndex: 10 }}>
-        <Navigation />
-        <Hero />
-        <About />
-        <Education />
-        <WorkHistory />
-        <Skills />
-        <Projects />
-        <Contact />
-      </div>
+          <div className="relative" style={{ zIndex: 10 }}>
+            <Navigation />
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <WorkHistory />
+            <Education />
+            <Contact />
+          </div>
     </div>
   )
 }
