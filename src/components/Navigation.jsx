@@ -33,12 +33,12 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-cyber-cyan' : 'bg-transparent'
+      isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-metal-gold' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <span className="text-2xl font-bold text-cyber-pink text-cyber-glow">
+            <span className="text-2xl font-bold text-metal-gold text-metal-glow">
               {'<RM />'}
             </span>
           </div>
@@ -50,10 +50,10 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => scrollToSection(item.href)}
-                  className="px-3 py-2 text-sm font-medium text-cyber-cyan hover:text-cyber-pink transition-all duration-300 hover:scale-110 relative group"
+                  className="px-3 py-2 text-sm font-medium text-slate-200 hover:text-metal-gold transition-all duration-300 relative group"
                 >
                   {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyber-pink group-hover:w-full transition-all duration-300"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-metal-gold group-hover:w-full transition-all duration-300"></span>
                 </button>
               ))}
             </div>
@@ -63,7 +63,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-cyber-cyan hover:text-cyber-pink transition-colors"
+              className="text-metal-silver hover:text-metal-bronze transition-colors"
             >
               {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
@@ -73,13 +73,13 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-black/90 backdrop-blur-md border-t border-cyber-cyan">
+        <div className="md:hidden bg-black/90 backdrop-blur-md border-t border-metal-silver">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-cyber-cyan hover:text-cyber-pink hover:bg-cyber-dark/50 transition-all"
+                className="block w-full text-left px-3 py-2 text-base font-medium text-metal-silver hover:text-metal-bronze hover:bg-metal-dark/50 transition-all"
               >
                 {item.name}
               </button>

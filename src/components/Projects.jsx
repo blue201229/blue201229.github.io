@@ -1,76 +1,28 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useMemo } from 'react'
 import { FaExternalLinkAlt, FaGamepad, FaServer, FaVideo, FaChevronLeft, FaChevronRight, FaTimes, FaPlay } from 'react-icons/fa'
 
 const Projects = () => {
-  const slideshowRef = useRef(null)
-  const [isSlideshowVisible, setIsSlideshowVisible] = useState(false)
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false)
+  const slideshowRefs = useRef({})
+  const [slideshowVisible, setSlideshowVisible] = useState({})
+  const [currentSlides, setCurrentSlides] = useState({})
+  const [videoModal, setVideoModal] = useState({ open: false, project: null })
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !isSlideshowVisible) {
-            setIsSlideshowVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1, rootMargin: '50px' }
-    )
-
-    if (slideshowRef.current) {
-      observer.observe(slideshowRef.current)
-    }
-
-    return () => {
-      if (slideshowRef.current) {
-        observer.unobserve(slideshowRef.current)
-      }
-    }
-  }, [isSlideshowVisible])
-
-  // Auto-advance slideshow when visible
-  useEffect(() => {
-    if (!isSlideshowVisible || isVideoModalOpen) return
-
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 4)
-    }, 3000) // Change slide every 3 seconds
-
-    return () => clearInterval(interval)
-  }, [isSlideshowVisible, isVideoModalOpen])
-
-  // Handle ESC key to close video modal
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === 'Escape' && isVideoModalOpen) {
-        setIsVideoModalOpen(false)
-      }
-    }
-
-    if (isVideoModalOpen) {
-      document.addEventListener('keydown', handleEscape)
-      document.body.style.overflow = 'hidden'
-    }
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape)
-      document.body.style.overflow = 'unset'
-    }
-  }, [isVideoModalOpen])
-
-  const projects = [
+  const projects = useMemo(() => [
     {
-      title: 'Fortzone Battle Royale',
-      type: 'WebGL MMO',
-      description: 'A high-stakes survival shooter battle royale game built with Unity WebGL. Features massive battlegrounds, real-time multiplayer combat, and cross-platform browser support.',
-      link: 'https://www.crazygames.com/game/fortzone-battle-royale-xkd',
+      title: 'Military FPS',
+      type: 'First-Person Shooter',
+      description: 'An intense military first-person shooter game built with Unity, featuring realistic combat mechanics, tactical gameplay, and immersive battlefield environments. Experience authentic military action with advanced weapon systems and strategic combat.',
+      link: 'https://drive.google.com/file/d/1oiGMjs5NNB3fu8tLhysb8QE56sKadOJW/view?usp=sharing',
       icon: <FaGamepad />,
-      color: 'pink',
-      tags: ['Unity', 'WebGL', 'MMO', 'Battle Royale'],
-      hasVideo: false,
-      image: 'https://img.crazygames.com/games/fortzone-battle-royale-xkd/cover-175x175.png'
+      color: 'bronze',
+      tags: ['Unity', 'FPS', 'Military', '3D'],
+      hasSlideshow: true,
+      slides: [
+        '/fps/Screenshot 2026-02-07 124514.png',
+        '/fps/Screenshot 2026-02-07 125143.png',
+        '/fps/Screenshot 2026-02-07 130001.png'
+      ],
+      videoUrl: 'https://drive.google.com/file/d/1oiGMjs5NNB3fu8tLhysb8QE56sKadOJW/view?usp=sharing'
     },
     {
       title: 'Mobile MMORPG',
@@ -79,7 +31,7 @@ const Projects = () => {
       link: 'https://drive.google.com/file/d/1A6kkK1MPdfeGxyZIzHRCP5ZzLJpdQQYX/view?usp=drive_link',
       link2: 'https://drive.google.com/file/d/1A6kkK1MPdfeGxyZIzHRCP5ZzLJpdQQYX/preview?autoplay=1&mute=1&controls=1',
       icon: <FaVideo />,
-      color: 'cyan',
+      color: 'silver',
       tags: ['Mobile', 'MMORPG', 'Unity', 'Multiplayer'],
       hasSlideshow: true,
       slides: [
@@ -88,7 +40,23 @@ const Projects = () => {
         '/hall.png',
         '/battle.png'
       ],
-      videoUrl: 'https://drive.google.com/file/d/1A6kkK1MPdfeGxyZIzHRCP5ZzLJpdQQYX/preview'
+      videoUrl: 'https://drive.google.com/file/d/1A6kkK1MPdfeGxyZIzHRCP5ZzLJpdQQYX/view?usp=drive_link'
+    },
+    {
+      title: 'Survival Project',
+      type: 'Survival Game',
+      description: 'An immersive survival game built with Unity, featuring first-person gameplay, dynamic environments, and challenging survival mechanics. Explore desolate landscapes, manage resources, and survive against the elements.',
+      link: 'https://drive.google.com/file/d/1s8JlVIr7fWQpaOrZKwyMIVrGvbmKqKjH/view?usp=sharing',
+      icon: <FaGamepad />,
+      color: 'copper',
+      tags: ['Unity', 'Survival', 'First-Person', '3D'],
+      hasSlideshow: true,
+      slides: [
+        '/survival/Screenshot 2026-02-07 044225.png',
+        '/survival/Screenshot 2026-02-07 044422.png',
+        '/survival/Screenshot 2026-02-07 044616.png'
+      ],
+      videoUrl: 'https://drive.google.com/file/d/1s8JlVIr7fWQpaOrZKwyMIVrGvbmKqKjH/view?usp=sharing'
     },
     {
       title: 'InfinityMU Private Server',
@@ -96,41 +64,115 @@ const Projects = () => {
       description: 'Participated in operating and customizing a private game server, managing server infrastructure, gameplay mechanics, and player experience.',
       link: 'https://www.infinitymu.net/',
       icon: <FaServer />,
-      color: 'purple',
+      color: 'gold',
       tags: ['Server Management', 'Game Customization', 'Operations']
     }
-  ]
+  ], [])
+
+  // Initialize slideshow states
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const projectIndex = entry.target.dataset.projectIndex
+          if (entry.isIntersecting && !slideshowVisible[projectIndex]) {
+            setSlideshowVisible((prev) => ({ ...prev, [projectIndex]: true }))
+          }
+        })
+      },
+      { threshold: 0.1, rootMargin: '50px' }
+    )
+
+    // Observe all slideshow refs
+    Object.values(slideshowRefs.current).forEach((ref) => {
+      if (ref) observer.observe(ref)
+    })
+
+    return () => {
+      Object.values(slideshowRefs.current).forEach((ref) => {
+        if (ref) observer.unobserve(ref)
+      })
+    }
+  }, [])
+
+  // Auto-advance slideshows when visible
+  useEffect(() => {
+    const intervals = {}
+    
+    Object.keys(slideshowVisible).forEach((projectIndex) => {
+      if (slideshowVisible[projectIndex] && !videoModal.open) {
+        const project = projects.find((_, idx) => idx.toString() === projectIndex)
+        if (project && project.hasSlideshow && project.slides) {
+          intervals[projectIndex] = setInterval(() => {
+            setCurrentSlides((prev) => {
+              const current = prev[projectIndex] || 0
+              return { ...prev, [projectIndex]: (current + 1) % project.slides.length }
+            })
+          }, 3000)
+        }
+      }
+    })
+
+    return () => {
+      Object.values(intervals).forEach((interval) => clearInterval(interval))
+    }
+  }, [slideshowVisible, videoModal.open, projects])
+
+  // Handle ESC key to close video modal
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && videoModal.open) {
+        setVideoModal({ open: false, project: null })
+      }
+    }
+
+    if (videoModal.open) {
+      document.addEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'unset'
+    }
+  }, [videoModal.open])
 
   const getColorClasses = (color) => {
     const colors = {
-      pink: {
-        border: 'border-cyber-pink',
-        text: 'text-cyber-pink',
-        bg: 'bg-cyber-pink/10',
-        hover: 'hover:border-cyber-pink'
+      bronze: {
+        border: 'border-metal-bronze',
+        text: 'text-metal-bronze',
+        bg: 'bg-metal-bronze/10',
+        hover: 'hover:border-metal-bronze'
       },
-      cyan: {
-        border: 'border-cyber-cyan',
-        text: 'text-cyber-cyan',
-        bg: 'bg-cyber-cyan/5',
-        hover: 'hover:border-cyber-cyan'
+      silver: {
+        border: 'border-metal-silver',
+        text: 'text-metal-silver',
+        bg: 'bg-metal-silver/5',
+        hover: 'hover:border-metal-silver'
       },
-      purple: {
-        border: 'border-cyber-purple',
-        text: 'text-cyber-purple',
-        bg: 'bg-cyber-purple/5',
-        hover: 'hover:border-cyber-purple'
+      gold: {
+        border: 'border-metal-gold',
+        text: 'text-metal-gold',
+        bg: 'bg-metal-gold/5',
+        hover: 'hover:border-metal-gold'
+      },
+      copper: {
+        border: 'border-metal-copper',
+        text: 'text-metal-copper',
+        bg: 'bg-metal-copper/5',
+        hover: 'hover:border-metal-copper'
       }
     }
-    return colors[color] || colors.cyan
+    return colors[color] || colors.silver
   }
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-12 text-center">
-          <span className="text-cyber-purple text-cyber-glow">SHOWCASE</span>
-          <span className="text-cyber-cyan text-cyber-glow"> PROJECTS</span>
+          <span className="text-metal-gold text-metal-glow">SHOWCASE</span>
+          <span className="text-metal-silver text-metal-glow"> PROJECTS</span>
         </h2>
 
         <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6">
@@ -150,12 +192,15 @@ const Projects = () => {
                 {/* Slideshow or Image */}
                 {project.hasSlideshow ? (
                   <div 
-                    ref={slideshowRef}
+                    ref={(el) => {
+                      if (el) slideshowRefs.current[index] = el
+                    }}
+                    data-project-index={index}
                     className="mb-4 -mx-6 -mt-6 overflow-hidden relative bg-black/50 cursor-pointer group/slideshow"
                     style={{ height: '300px' }}
-                    onClick={() => setIsVideoModalOpen(true)}
+                    onClick={() => setVideoModal({ open: true, project })}
                   >
-                    {isSlideshowVisible && project.slides ? (
+                    {slideshowVisible[index] && project.slides ? (
                       <>
                         <div className="relative w-full h-full">
                           {project.slides.map((slide, slideIndex) => (
@@ -164,7 +209,7 @@ const Projects = () => {
                               src={slide}
                               alt={`${project.title} - Slide ${slideIndex + 1}`}
                               className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                                slideIndex === currentSlide ? 'opacity-100' : 'opacity-0'
+                                slideIndex === (currentSlides[index] || 0) ? 'opacity-100' : 'opacity-0'
                               }`}
                               onError={(e) => {
                                 e.target.style.display = 'none'
@@ -175,34 +220,40 @@ const Projects = () => {
                         {/* Play button overlay */}
                         <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover/slideshow:bg-black/30 transition-all duration-300 z-20">
                           <div className="opacity-0 group-hover/slideshow:opacity-100 transition-opacity duration-300">
-                            <div className="bg-cyber-cyan/80 hover:bg-cyber-cyan rounded-full p-4 border-2 border-cyber-cyan">
-                              <FaPlay className="text-2xl text-black ml-1" />
+                            <div className={`${colors.bg} ${colors.border} border-2 rounded-full p-4 hover:opacity-100 opacity-80`}>
+                              <FaPlay className={`text-2xl ${colors.text} ml-1`} />
                             </div>
-                            <p className="text-cyber-cyan text-sm mt-2 text-center font-semibold">Click to watch video</p>
+                            <p className={`${colors.text} text-sm mt-2 text-center font-semibold`}>Click to watch video</p>
                           </div>
                         </div>
                         {/* Slide indicators */}
                         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2 z-10" onClick={(e) => e.stopPropagation()}>
-                          {project.slides.map((_, slideIndex) => (
-                            <button
-                              key={slideIndex}
-                              onClick={() => setCurrentSlide(slideIndex)}
-                              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                slideIndex === currentSlide 
-                                  ? 'bg-cyber-cyan w-6' 
-                                  : 'bg-cyber-cyan/40 hover:bg-cyber-cyan/60'
-                              }`}
-                              aria-label={`Go to slide ${slideIndex + 1}`}
-                            />
-                          ))}
+                          {project.slides.map((_, slideIndex) => {
+                            const isActive = slideIndex === (currentSlides[index] || 0)
+                            return (
+                              <button
+                                key={slideIndex}
+                                onClick={() => setCurrentSlides((prev) => ({ ...prev, [index]: slideIndex }))}
+                                className={`rounded-full transition-all duration-300 ${
+                                  isActive
+                                    ? `${colors.bg} ${colors.border} border w-6 h-2` 
+                                    : `${colors.bg} opacity-40 hover:opacity-60 w-2 h-2`
+                                }`}
+                                aria-label={`Go to slide ${slideIndex + 1}`}
+                              />
+                            )
+                          })}
                         </div>
                         {/* Navigation arrows */}
                         <button
                           onClick={(e) => {
                             e.stopPropagation()
-                            setCurrentSlide((prev) => (prev - 1 + project.slides.length) % project.slides.length)
+                            setCurrentSlides((prev) => {
+                              const current = prev[index] || 0
+                              return { ...prev, [index]: (current - 1 + project.slides.length) % project.slides.length }
+                            })
                           }}
-                          className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 text-cyber-cyan p-2 rounded-full transition-all duration-300 z-10"
+                          className={`absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 ${colors.text} p-2 rounded-full transition-all duration-300 z-10`}
                           aria-label="Previous slide"
                         >
                           <FaChevronLeft />
@@ -210,9 +261,12 @@ const Projects = () => {
                         <button
                           onClick={(e) => {
                             e.stopPropagation()
-                            setCurrentSlide((prev) => (prev + 1) % project.slides.length)
+                            setCurrentSlides((prev) => {
+                              const current = prev[index] || 0
+                              return { ...prev, [index]: (current + 1) % project.slides.length }
+                            })
                           }}
-                          className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 text-cyber-cyan p-2 rounded-full transition-all duration-300 z-10"
+                          className={`absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 ${colors.text} p-2 rounded-full transition-all duration-300 z-10`}
                           aria-label="Next slide"
                         >
                           <FaChevronRight />
@@ -220,7 +274,7 @@ const Projects = () => {
                       </>
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-                        <div className="text-cyber-cyan text-center">
+                        <div className={`${colors.text} text-center`}>
                           <FaVideo className="text-4xl mb-2 mx-auto opacity-50 animate-pulse" />
                           <p className="text-sm opacity-70">Loading slideshow...</p>
                         </div>
@@ -247,12 +301,12 @@ const Projects = () => {
                   <div className={`text-xs font-bold ${colors.text} mb-2 uppercase tracking-wider`}>
                     {project.type}
                   </div>
-                  <h3 className={`text-2xl font-bold ${colors.text} mb-3 text-cyber-glow`}>
+                  <h3 className={`text-2xl font-bold ${colors.text} mb-3 text-metal-glow`}>
                     {project.title}
                   </h3>
                 </div>
                 
-                <p className="text-cyber-cyan/80 mb-4 leading-relaxed">
+                <p className="text-metal-silver/80 mb-4 leading-relaxed">
                   {project.description}
                 </p>
 
@@ -279,44 +333,44 @@ const Projects = () => {
         </div>
 
         {/* Video Modal */}
-        {isVideoModalOpen && (
+        {videoModal.open && videoModal.project && (
           <div 
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
-            onClick={() => setIsVideoModalOpen(false)}
+            onClick={() => setVideoModal({ open: false, project: null })}
           >
             <div 
-              className="relative w-full max-w-5xl mx-4 bg-black/95 border-2 border-cyber-cyan rounded-lg p-4 md:p-6"
+              className={`relative w-full max-w-5xl mx-4 bg-black/95 border-2 ${getColorClasses(videoModal.project.color).border} rounded-lg p-4 md:p-6`}
               onClick={(e) => e.stopPropagation()}
             >
               <button
-                onClick={() => setIsVideoModalOpen(false)}
-                className="absolute top-4 right-4 text-cyber-cyan hover:text-cyber-pink transition-colors z-10"
+                onClick={() => setVideoModal({ open: false, project: null })}
+                className={`absolute top-4 right-4 ${getColorClasses(videoModal.project.color).text} hover:opacity-70 transition-opacity z-10`}
               >
                 <FaTimes size={24} />
               </button>
               
               <div className="pt-8">
-                <h3 className="text-2xl font-bold text-cyber-cyan mb-4 text-center">
-                  Mobile MMORPG - Gameplay Video
+                <h3 className={`text-2xl font-bold ${getColorClasses(videoModal.project.color).text} mb-4 text-center`}>
+                  {videoModal.project.title} - Gameplay Video
                 </h3>
                 <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/80 rounded-lg border border-cyber-cyan p-8">
-                    <FaVideo className="text-6xl text-cyber-cyan mb-4 opacity-50" />
-                    <p className="text-cyber-cyan text-lg mb-4 text-center">
+                  <div className={`absolute inset-0 flex flex-col items-center justify-center bg-black/80 rounded-lg border ${getColorClasses(videoModal.project.color).border} p-8`}>
+                    <FaVideo className={`text-6xl ${getColorClasses(videoModal.project.color).text} mb-4 opacity-50`} />
+                    <p className={`${getColorClasses(videoModal.project.color).text} text-lg mb-4 text-center`}>
                       Google Drive videos cannot be embedded due to security restrictions
                     </p>
                     <a
-                      href="https://drive.google.com/file/d/1A6kkK1MPdfeGxyZIzHRCP5ZzLJpdQQYX/view?usp=drive_link"
+                      href={videoModal.project.videoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-6 py-3 bg-cyber-cyan/20 border-2 border-cyber-cyan text-cyber-cyan rounded-lg hover:bg-cyber-cyan/30 transition-all duration-300 font-semibold flex items-center gap-2"
+                      className={`px-6 py-3 ${getColorClasses(videoModal.project.color).bg} border-2 ${getColorClasses(videoModal.project.color).border} ${getColorClasses(videoModal.project.color).text} rounded-lg hover:opacity-80 transition-all duration-300 font-semibold flex items-center gap-2`}
                     >
                       <FaExternalLinkAlt />
                       Watch Video on Google Drive
                     </a>
                   </div>
                 </div>
-                <p className="text-cyber-cyan/80 text-sm mt-4 text-center">
+                <p className={`${getColorClasses(videoModal.project.color).text}/80 text-sm mt-4 text-center`}>
                   Click outside the video or press ESC to close
                 </p>
               </div>

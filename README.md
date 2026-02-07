@@ -46,4 +46,3 @@ npm run preview
 - GitHub: [@blue201229](https://github.com/blue201229)
 - Discord: blue_201229
 - Telegram: @fan_1229
-- Location: Denver, Colorado

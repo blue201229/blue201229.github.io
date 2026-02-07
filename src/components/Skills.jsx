@@ -4,67 +4,67 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'Game Engines',
-      color: 'pink',
-      skills: ['Unity', 'Unreal Engine', 'Ogre3D', 'Godot']
+      color: 'bronze',
+      skills: ['Unity', 'Unreal Engine', 'Pixi.js']
     },
     {
       title: 'Blockchain Networks',
-      color: 'cyan',
+      color: 'silver',
       skills: ['Ethereum', 'Solana', 'Binance Smart Chain', 'Polygon']
     },
     {
       title: 'Languages',
-      color: 'purple',
-      skills: ['🦀 Rust (Expert)', 'C++', 'C#', 'Python', 'JavaScript']
+      color: 'gold',
+      skills: ['🦀 Rust (Expert)', 'C++', 'C#', 'Python', 'JavaScript', 'TypeScript']
     },
     {
       title: 'AI & Productivity',
-      color: 'cyan',
+      color: 'silver',
       skills: ['AI-Assisted Development', 'Code Generation', 'Automation', 'AI Tools Integration']
     },
     {
       title: 'Specializations',
-      color: 'green',
+      color: 'copper',
       skills: ['MMO Development', 'WebGL', 'Metaverse', 'Game Servers', 'Bot Development']
     }
   ]
 
   const getColorClasses = (color) => {
     const colors = {
-      pink: {
-        border: 'border-cyber-pink',
-        text: 'text-cyber-pink',
-        bg: 'bg-cyber-pink/10',
-        hover: 'hover:border-cyber-pink'
+      bronze: {
+        border: 'border-metal-bronze',
+        text: 'text-metal-bronze',
+        bg: 'bg-metal-bronze/10',
+        hover: 'hover:border-metal-bronze'
       },
-      cyan: {
-        border: 'border-cyber-cyan',
-        text: 'text-cyber-cyan',
-        bg: 'bg-cyber-cyan/5',
-        hover: 'hover:border-cyber-cyan'
+      silver: {
+        border: 'border-metal-silver',
+        text: 'text-metal-silver',
+        bg: 'bg-metal-silver/5',
+        hover: 'hover:border-metal-silver'
       },
-      purple: {
-        border: 'border-cyber-purple',
-        text: 'text-cyber-purple',
-        bg: 'bg-cyber-purple/5',
-        hover: 'hover:border-cyber-purple'
+      gold: {
+        border: 'border-metal-gold',
+        text: 'text-metal-gold',
+        bg: 'bg-metal-gold/5',
+        hover: 'hover:border-metal-gold'
       },
-      green: {
-        border: 'border-cyber-green',
-        text: 'text-cyber-green',
-        bg: 'bg-cyber-green/5',
-        hover: 'hover:border-cyber-green'
+      copper: {
+        border: 'border-metal-copper',
+        text: 'text-metal-copper',
+        bg: 'bg-metal-copper/5',
+        hover: 'hover:border-metal-copper'
       }
     }
-    return colors[color] || colors.cyan
+    return colors[color] || colors.silver
   }
 
   return (
     <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-12 text-center">
-          <span className="text-cyber-cyan text-cyber-glow">SKILLS</span>
-          <span className="text-cyber-pink text-cyber-glow"> & TECH</span>
+          <span className="text-metal-gold text-metal-glow">SKILLS</span>
+          <span className="text-slate-300"> & TECH</span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -75,7 +75,7 @@ const Skills = () => {
                 key={index}
                 className={`bg-black/40 border ${colors.border} p-6 rounded-lg backdrop-blur-sm transition-all duration-300 ${colors.hover}`}
               >
-                <h3 className={`text-2xl font-bold ${colors.text} mb-6 text-cyber-glow`}>
+                <h3 className={`text-2xl font-bold ${colors.text} mb-6 text-metal-glow`}>
                   {category.title}
                 </h3>
                 <div className="grid grid-cols-2 gap-3">

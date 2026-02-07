@@ -10,21 +10,21 @@
 
 body {
   font-family: 'Orbitron', monospace;
-  background: #000000;
-  color: #4a9eff;
+  background: #1A1A1A; /* dark medieval background */
+  color: #D4D4D4; /* soft metallic text */
   overflow-x: hidden;
 }
 
-/* 3D Grid Pattern */
+/* 3D Grid Pattern - Medieval stone texture */
 .grid-pattern {
   position: absolute;
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(rgba(74, 158, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(74, 158, 255, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(139, 134, 128, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 134, 128, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
-  animation: grid-move 20s linear infinite;
+  animation: grid-move 40s linear infinite;
 }
 
 @keyframes grid-move {
@@ -37,17 +37,18 @@ body {
 }
 
 @layer utilities {
-  .text-cyber-glow {
-    text-shadow: 0 0 5px currentColor, 0 0 8px currentColor;
+  .text-metal-glow {
+    /* Subtle metallic glow */
+    text-shadow: 0 0 3px rgba(212, 175, 55, 0.4), 0 0 6px rgba(192, 192, 192, 0.2);
   }
   
-  .border-cyber {
+  .border-metal {
     border: 1px solid;
-    box-shadow: 0 0 5px currentColor;
+    box-shadow: 0 0 4px rgba(58, 58, 58, 0.8);
   }
   
-  .bg-cyber-gradient {
-    background: linear-gradient(135deg, #6b46c1 0%, #4a9eff 50%, #7c3aed 100%);
+  .bg-metal-gradient {
+    background: linear-gradient(135deg, #CD7F32 0%, #D4AF37 50%, #B87333 100%);
   }
   
   .glitch-text {
@@ -66,14 +67,14 @@ body {
   
   .glitch-text::before {
     left: 2px;
-    text-shadow: -2px 0 #ff00ff;
+    text-shadow: -2px 0 #8B0000;
     clip: rect(44px, 450px, 56px, 0);
     animation: glitch-anim 5s infinite linear alternate-reverse;
   }
   
   .glitch-text::after {
     left: -2px;
-    text-shadow: -2px 0 #00ffff;
+    text-shadow: -2px 0 #1C2841;
     clip: rect(44px, 450px, 56px, 0);
     animation: glitch-anim 1s infinite linear alternate-reverse;
   }
@@ -110,10 +111,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #7c3aed, #4a9eff);
+  background: linear-gradient(180deg, #CD7F32, #D4AF37);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #4a9eff, #7c3aed);
+  background: linear-gradient(180deg, #D4AF37, #B87333);
 }

@@ -7,15 +7,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        cyber: {
-          pink: '#c084fc',
-          cyan: '#4a9eff',
-          purple: '#7c3aed',
-          blue: '#3b82f6',
-          green: '#22c55e',
-          yellow: '#eab308',
-          dark: '#000000',
-          darker: '#0a0a0a',
+        metal: {
+          // Casual, metal, medieval palette
+          silver: '#C0C0C0',      // bright silver
+          iron: '#71797E',        // iron gray
+          steel: '#4A4A4A',       // dark steel
+          bronze: '#CD7F32',      // bronze
+          copper: '#B87333',      // aged copper
+          gold: '#D4AF37',        // medieval gold
+          stone: '#8B8680',       // stone gray
+          darkstone: '#3A3A3A',   // dark stone
+          deepred: '#8B0000',     // medieval red
+          deepblue: '#1C2841',    // medieval blue
+          earth: '#5D4E37',       // earth brown
+          dark: '#1A1A1A',        // near-black
+          darker: '#0F0F0F',      // darker black
         }
       },
       fontFamily: {
