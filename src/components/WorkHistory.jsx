@@ -49,19 +49,20 @@ const WorkHistory = () => {
       technologies: ['Game Development', 'Unity', 'Mobile', 'RPG', 'C#', 'Live-Ops', 'UI Frameworks']
     },
     {
-      period: '2013 ~ 2017',
-      title: 'Unreal Game Developer',
-      company: 'SeaSun (Kingsoft - China)',
+      period: '2013 ~ 2015',
+      title: 'Game Developer',
+      company: 'SeaSun Games',
       icon: <FaBriefcase />,
       description: (
         <>
-          <span className="text-metal-gold font-bold">Project: Relics of Gods (Unreal Engine):</span> Leveraged C++ and Unreal Engine to build high-performance 3D gameplay features for a cross-platform title.<br/><br/>
-          <span className="text-metal-bronze font-bold">Engine Mastery:</span> Integrated advanced shader effects and physics-based interactions, pushing the visual boundaries of mobile gaming during the early Unreal mobile era.<br/><br/>
-          <span className="text-metal-silver font-bold">Lifecycle Contribution:</span> Participated in the full development lifecycle, from initial prototype to large-scale beta testing and regional deployment.
+          <span className="text-metal-gold font-bold">Full-Cycle Development:</span> Contributed to the end-to-end development lifecycle of the title "Relics of Gods," participating from initial concept through to final release.<br/><br/>
+          <span className="text-metal-bronze font-bold">Engine Integration:</span> Developed core gameplay features using a proprietary in-house engine, ensuring performance optimization and technical stability.<br/><br/>
+          <span className="text-metal-silver font-bold">Rapid Prototyping:</span> Spearheaded cross-platform prototyping initiatives using Unity and Unreal Engine to evaluate gameplay mechanics and technical feasibility.<br/><br/>
+          <span className="text-metal-copper font-bold">Engine Migration:</span> Played a key role in the technical transition and conversion of the project to Unreal Engine, maintaining feature parity and enhancing visual fidelity.
         </>
       ),
       color: 'purple',
-      technologies: ['Game Development', 'Unreal Engine', 'C++', '3D Graphics', 'Shaders', 'Physics']
+      technologies: ['Game Development', 'Unreal Engine', 'Unity', 'C++', 'Proprietary Engine', 'Engine Migration']
     }
   ]
 
