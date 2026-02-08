@@ -73,17 +73,11 @@ const About = () => {
 
             <div className="bg-black/40 border-2 border-metal-gold p-6 rounded-lg backdrop-blur-sm hover:border-metal-bronze transition-all duration-300">
               <div className="flex items-center gap-3 mb-4">
-                <h3 className="text-2xl font-bold text-metal-gold">🤖 AI-Powered Workflow</h3>
+                <h3 className="text-2xl font-bold text-metal-gold">🤖 AI Developer</h3>
                 <span className="px-3 py-1 bg-metal-gold/20 border border-metal-gold text-metal-gold rounded text-sm font-bold">AI EXPERT</span>
               </div>
-              <p className="text-metal-silver/80 leading-relaxed mb-3">
-                <span className="text-metal-gold font-bold">I leverage AI tools effectively</span> to boost productivity, 
-                accelerate development, and solve complex problems. From code generation and refactoring to game design 
-                assistance and debugging, AI is an integral part of my workflow.
-              </p>
-              <p className="text-metal-copper font-semibold">
-                Using AI to enhance game development, automate repetitive tasks, generate creative solutions, 
-                and maintain high code quality while delivering faster results.
+              <p className="text-metal-silver/80 leading-relaxed">
+                Next-generation Software Engineer and AI Researcher specializing in the convergence of <span className="text-metal-gold font-bold">Artificial Intelligence</span>, <span className="text-metal-copper font-bold">Web3</span>, and <span className="text-metal-bronze font-bold">3D Visual Technology</span>. Since 2025, I have pivoted my core focus toward developing high-performance, stable tools using <span className="text-metal-silver font-bold">Rust</span>, with a deep emphasis on <span className="text-metal-gold font-bold">Large Language Models (LLMs)</span>, <span className="text-metal-gold font-bold">NLP</span>, and <span className="text-metal-gold font-bold">model compression</span>. I leverage an AI-powered workflow to accelerate development cycles and solve complex multimodal problems, aiming to build products that solve tangible, real-world challenges through <span className="text-metal-copper font-bold">Unity</span>, <span className="text-metal-copper font-bold">Unreal</span>, and decentralized ecosystems.
               </p>
             </div>
 

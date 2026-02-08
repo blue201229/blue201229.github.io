@@ -4,19 +4,36 @@ import { FaBriefcase, FaLaptopCode } from 'react-icons/fa'
 const WorkHistory = () => {
   const workHistory = [
     {
-      period: '2024 - Present',
-      title: 'Independent Game Architect & Consultant',
+      period: '2025 - Present',
+      title: 'AI & Systems Developer',
       company: 'Self-Employed',
       icon: <FaLaptopCode />,
       description: (
         <>
-          <span className="text-metal-bronze font-bold">Rust-Powered Systems:</span> Engineering high-performance game backends using Rust, focusing on memory safety and concurrency for Web3 and Metaverse infrastructures.<br/><br/>
-          <span className="text-metal-gold font-bold">AI-Driven Pipelines:</span> Architecting proprietary workflows using Generative AI (LLMs/Stable Diffusion) to reduce asset production cycles by 40% and accelerate rapid prototyping in Unity and Unreal Engine 5.<br/><br/>
-          <span className="text-metal-silver font-bold">Web3 Integration:</span> Designing decentralized gaming economies and smart contract interactions for next-generation virtual environments.
+          <span className="text-metal-gold font-bold">AI & Systems Developer:</span> Pioneered the development of high-performance tools using Rust to ensure memory safety and computational efficiency in AI applications.<br/><br/>
+          <span className="text-metal-bronze font-bold">Multimodal Research:</span> Spearheaded research into Multimodal Computing Platforms, integrating text, 3D assets, and real-time data to create immersive, intelligent environments.<br/><br/>
+          <span className="text-metal-silver font-bold">LLM Optimization:</span> Implemented advanced Language Model Compression techniques to deploy sophisticated NLP models on resource-constrained Web3 and 3D platforms.<br/><br/>
+          <span className="text-metal-copper font-bold">Tech Integration:</span> Architected cross-stack solutions combining Web3 protocols with Unity/Unreal Engine to build decentralized, AI-driven visual experiences.<br/><br/>
+          <span className="text-metal-gold font-bold">Workflow Innovation:</span> Engineered a proprietary AI-Powered Workflow, utilizing autonomous agents and LLM-assisted coding to increase development velocity.
         </>
       ),
       color: 'cyan',
-      technologies: ['Game Development', 'Rust', 'Unity', 'Unreal Engine 5', 'AI Tools', 'Web3', 'LLMs']
+      technologies: ['AI Development', 'Rust', 'LLMs', 'NLP', 'Model Compression', 'Multimodal Computing', 'Web3', 'Unity', 'Unreal Engine', 'Autonomous Agents']
+    },
+    {
+      period: '2021 ~ 2025',
+      title: 'Freelance Web3 Developer',
+      company: 'Self-Employed',
+      icon: <FaLaptopCode />,
+      description: (
+        <>
+          <span className="text-metal-gold font-bold">Blockchain Integration & Ecosystem Design:</span> Specialized in blockchain integration and ecosystem design during the Web3 expansion, delivering high-performance decentralized solutions across the <span className="text-metal-copper">Solana</span>, <span className="text-metal-copper">Ethereum</span>, and <span className="text-metal-copper">BSC</span> networks. Developed secure smart contracts and bridged the gap between traditional gaming mechanics and blockchain-enabled economies.<br/><br/>
+          <span className="text-metal-bronze font-bold">Key Projects:</span> Integrated Web3 elements into Decimated (Unreal Engine survival RPG); contributed to Portals browser-based metaverse builder; developed core mechanics for CyberGalZ cyberpunk metaverse with NFT functionalities; built interoperable 2D metaverse infrastructure on Solana for SOVANA; developed YYSniper high-speed Telegram trading bot with PancakeSwap integration.<br/><br/>
+          <span className="text-metal-silver font-bold">Technical Expertise:</span> Smart Contract Development (Solidity, Rust), Tokenomics Design, SDK Integration, Web3 Game Development, DEX optimization.
+        </>
+      ),
+      color: 'cyan',
+      technologies: ['Web3', 'Solidity', 'Rust', 'Smart Contracts', 'Blockchain', 'Solana', 'Ethereum', 'BSC', 'Unreal Engine', 'Metaverse', 'NFT', 'DEX']
     },
     {
       period: '2021 ~ 2023',
