@@ -112,6 +112,21 @@ const Projects = () => {
       ],
       videoUrl: null,
       fields: ['Game', 'Professional']
+    },
+    {
+      title: 'Tap Clash of Heavens',
+      type: 'Idle-Clicker',
+      description: 'A high-intensity idle-clicker mobile game featuring epic celestial combat mechanics. Built with Unity, this title delivers addictive tap-based gameplay with optimized performance to handle thousands of on-screen effects simultaneously.',
+      link: null,
+      icon: <FaGamepad />,
+      color: 'copper',
+      tags: ['Unity', 'Mobile', 'Idle-Clicker', '2D'],
+      hasSlideshow: true,
+      slides: [
+        '/clashheaven/hq720.jpg'
+      ],
+      videoUrl: null,
+      fields: ['Game', 'Professional']
     }
   ], [])
 

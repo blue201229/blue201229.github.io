@@ -9,24 +9,23 @@ const About = () => {
           <span className="text-slate-300"> ME</span>
         </h2>
 
+        <div className="max-w-4xl mx-auto mb-12">
+          <div className="bg-black/40 border-2 border-metal-gold p-8 rounded-lg backdrop-blur-sm">
+            <p className="text-metal-silver/90 leading-relaxed text-lg">
+              A dynamic software engineer with a career defined by high-impact pivots—beginning in the immersive world of <span className="text-metal-bronze font-bold">Game Development</span>, evolving through the <span className="text-metal-copper font-bold">Web3 revolution</span>, and now specializing in the frontier of <span className="text-metal-gold font-bold">Artificial Intelligence</span>. I bring a unique perspective that blends the user-centric design of gaming with the technical rigor of decentralized systems, currently dedicated to architecting intelligent, AI-driven solutions.
+            </p>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="space-y-6">
             <div className="bg-black/40 border-2 border-metal-bronze p-6 rounded-lg backdrop-blur-sm hover:border-metal-silver transition-all duration-300">
               <div className="flex items-center gap-3 mb-4">
-                <h3 className="text-2xl font-bold text-metal-bronze">Game Developer</h3>
+                <h3 className="text-2xl font-bold text-metal-bronze">Game Development</h3>
                 <span className="px-3 py-1 bg-metal-bronze/20 border border-metal-bronze text-metal-bronze rounded text-sm font-bold">PRIMARY ROLE</span>
               </div>
-              <p className="text-metal-silver/80 leading-relaxed mb-3">
-                With over <span className="text-metal-copper font-bold">10+ years</span> of experience, 
-                <span className="text-metal-bronze font-bold"> game development is my core passion and primary expertise</span>. 
-                I've built everything from indie games to large-scale MMO projects, specializing in both 
-                <span className="text-metal-copper"> 3D</span> and <span className="text-metal-copper"> 2D</span> game development.
-              </p>
               <p className="text-metal-silver/80 leading-relaxed">
-                Extensive experience with <span className="text-metal-copper">Unity</span>, 
-                <span className="text-metal-copper"> Unreal Engine</span>, 
-                and <span className="text-metal-copper">Pixi.js</span>. From gameplay mechanics to rendering pipelines, 
-                I bring games to life across multiple platforms.
+                Dedicated to creating engaging, high-performance environments and perfecting the "feel" of digital products through <span className="text-metal-copper font-bold">Unity</span> and <span className="text-metal-copper font-bold">Unreal Engine</span>.
               </p>
             </div>
 
@@ -46,14 +45,13 @@ const About = () => {
               </p>
             </div>
 
-            <div className="bg-black/40 border border-metal-copper p-6 rounded-lg backdrop-blur-sm hover:border-metal-bronze transition-all duration-300">
-              <h3 className="text-2xl font-bold text-metal-copper mb-4">Web3 & Metaverse</h3>
+            <div className="bg-black/40 border-2 border-metal-copper p-6 rounded-lg backdrop-blur-sm hover:border-metal-bronze transition-all duration-300">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-2xl font-bold text-metal-copper">Web3 Developer</h3>
+                <span className="px-3 py-1 bg-metal-copper/20 border border-metal-copper text-metal-copper rounded text-sm font-bold">WEB3 EXPERT</span>
+              </div>
               <p className="text-metal-silver/80 leading-relaxed">
-                Pioneering the integration of blockchain technologies in gaming. I've worked with 
-                <span className="text-metal-copper"> Ethereum</span>, <span className="text-metal-copper">Solana</span>, 
-                <span className="text-metal-copper"> Binance Smart Chain</span>, and 
-                <span className="text-metal-copper"> Polygon</span> to create decentralized gaming experiences 
-                and metaverse platforms.
+                Web3 Engineer specializing in the evolution of gaming from off-chain to on-chain. Proficient in <span className="text-metal-copper font-bold">Solidity</span> and <span className="text-metal-copper font-bold">Rust</span>, I bridge the gap between traditional 3D development and the Metaverse, creating seamless integrations for digital assets and decentralized economies.
               </p>
             </div>
           </div>

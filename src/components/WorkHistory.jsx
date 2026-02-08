@@ -21,7 +21,7 @@ const WorkHistory = () => {
     {
       period: '2021 ~ 2023',
       title: 'Game Developer',
-      company: 'Zhuxin Network (China)',
+      company: 'Zhuxin Network (China) - Contract, Part-Time, Full Remote',
       icon: <FaBriefcase />,
       description: (
         <>
@@ -49,20 +49,36 @@ const WorkHistory = () => {
       technologies: ['Game Development', 'Unity', 'Mobile', 'RPG', 'C#', 'Live-Ops', 'UI Frameworks']
     },
     {
+      period: '2015 ~ 2017',
+      title: 'Unity Game Developer',
+      company: 'Element Cell Game Limited',
+      icon: <FaBriefcase />,
+      description: (
+        <>
+          <span className="text-metal-gold font-bold">Finger-Endurance Engineering:</span> Masterminded the development of "Tap Clash of Heavens," a title dedicated to testing the structural integrity of player smartphone screens through high-intensity idle-clicker mechanics.<br/><br/>
+          <span className="text-metal-bronze font-bold">The Architect of "The Click":</span> Leveraged Unity and C# to transform simple finger spasms into epic celestial combat, ensuring every tap felt punchy, rewarding, and borderline addictive.<br/><br/>
+          <span className="text-metal-silver font-bold">Optimizing Total Chaos:</span> Finely tuned game performance so that even when the screen was drowning in thousands of gold coins and damage numbers, the frame rate stayed as smooth as a freshly swiped credit card.<br/><br/>
+          <span className="text-metal-copper font-bold">Asset Wrangling:</span> Collaborated with designers to ensure our visual effects were flashy enough to distract players from their developing carpal tunnel syndrome.
+        </>
+      ),
+      color: 'purple',
+      technologies: ['Game Development', 'Unity', 'Mobile', 'Idle-Clicker', 'C#', 'Performance Optimization', 'Visual Effects']
+    },
+    {
       period: '2013 ~ 2015',
       title: 'Game Developer',
       company: 'SeaSun Games',
       icon: <FaBriefcase />,
       description: (
         <>
-          <span className="text-metal-gold font-bold">Full-Cycle Development:</span> Contributed to the end-to-end development lifecycle of the title "Relics of Gods," participating from initial concept through to final release.<br/><br/>
+          <span className="text-metal-gold font-bold">Full-Cycle Development - Relics of Gods:</span> Led end-to-end development from initial concept and pre-production through prototyping, production, testing, and final release. Actively participated in every phase of the game's lifecycle, from early design discussions to post-launch support, ensuring seamless integration of gameplay systems, art assets, and technical infrastructure.<br/><br/>
           <span className="text-metal-bronze font-bold">Engine Integration:</span> Developed core gameplay features using a proprietary in-house engine, ensuring performance optimization and technical stability.<br/><br/>
           <span className="text-metal-silver font-bold">Rapid Prototyping:</span> Spearheaded cross-platform prototyping initiatives using Unity and Unreal Engine to evaluate gameplay mechanics and technical feasibility.<br/><br/>
           <span className="text-metal-copper font-bold">Engine Migration:</span> Played a key role in the technical transition and conversion of the project to Unreal Engine, maintaining feature parity and enhancing visual fidelity.
         </>
       ),
       color: 'purple',
-      technologies: ['Game Development', 'Unreal Engine', 'Unity', 'C++', 'Proprietary Engine', 'Engine Migration']
+      technologies: ['Game Development', 'Unreal Engine', 'Unity', 'C++', 'Proprietary Engine', 'Engine Migration', 'Full-Cycle Development']
     }
   ]
 
