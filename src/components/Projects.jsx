@@ -127,6 +127,21 @@ const Projects = () => {
       ],
       videoUrl: null,
       fields: ['Game', 'Professional']
+    },
+    {
+      title: 'YYMusicPlayer',
+      type: 'Desktop Application',
+      description: 'This desktop application is a high-performance music player designed to demonstrate the power of Rust in systems-level application development. Built using the Tauri framework, the app delivers a native desktop experience with a fraction of the resource footprint required by traditional Electron-based players.',
+      link: 'https://github.com/blue201229/music-player',
+      icon: <FaGamepad />,
+      color: 'silver',
+      tags: ['Rust', 'Tauri', 'Desktop', 'Music Player'],
+      hasSlideshow: true,
+      slides: [
+        '/tauri-music-player/1.png'
+      ],
+      videoUrl: null,
+      fields: ['Side-Project']
     }
   ], [])
 
@@ -283,9 +298,15 @@ const Projects = () => {
                       if (el) slideshowRefs.current[index] = el
                     }}
                     data-project-index={index}
-                    className={`mb-4 -mx-6 -mt-6 overflow-hidden relative bg-black/50 group/slideshow ${project.videoUrl ? 'cursor-pointer' : ''}`}
+                    className={`mb-4 -mx-6 -mt-6 overflow-hidden relative bg-black/50 group/slideshow ${(project.videoUrl || project.link) ? 'cursor-pointer' : ''}`}
                     style={{ height: '300px' }}
-                    onClick={() => project.videoUrl && setVideoModal({ open: true, project })}
+                    onClick={() => {
+                      if (project.videoUrl) {
+                        setVideoModal({ open: true, project })
+                      } else if (project.link) {
+                        window.open(project.link, '_blank', 'noopener,noreferrer')
+                      }
+                    }}
                   >
                     {slideshowVisible[index] && project.slides ? (
                       <>
@@ -312,6 +333,17 @@ const Projects = () => {
                                 <FaPlay className={`text-2xl ${colors.text} ml-1`} />
                               </div>
                               <p className={`${colors.text} text-sm mt-2 text-center font-semibold`}>Click to watch video</p>
+                            </div>
+                          </div>
+                        )}
+                        {/* Link overlay - show if link exists but no videoUrl */}
+                        {!project.videoUrl && project.link && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover/slideshow:bg-black/30 transition-all duration-300 z-20">
+                            <div className="opacity-0 group-hover/slideshow:opacity-100 transition-opacity duration-300">
+                              <div className={`${colors.bg} ${colors.border} border-2 rounded-full p-4 hover:opacity-100 opacity-80`}>
+                                <FaExternalLinkAlt className={`text-2xl ${colors.text}`} />
+                              </div>
+                              <p className={`${colors.text} text-sm mt-2 text-center font-semibold`}>Click to view project</p>
                             </div>
                           </div>
                         )}
