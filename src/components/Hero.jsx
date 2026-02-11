@@ -15,7 +15,7 @@ const Hero = () => {
         <div className="mb-6">
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tight">
             <span className="block text-metal-bronze text-metal-glow">RAINER</span>
-            <span className="block text-metal-silver text-metal-glow">MOLTABO</span>
+            <span className="block text-metal-silver text-metal-glow">MONTALVO</span>
           </h1>
         </div>
         

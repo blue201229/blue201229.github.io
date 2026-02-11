@@ -12,8 +12,8 @@ const Contact = () => {
     },
     {
       name: 'DEV.to',
-      value: 'rainer_montalbo_2026',
-      link: 'https://dev.to/rainer_montalbo_2026',
+      value: 'rainer_montalvo_2026',
+      link: 'https://dev.to/rainer_montalvo_2026',
       icon: <FaCode />,
       color: 'silver'
     },
@@ -122,7 +122,7 @@ const Contact = () => {
       </div>
 
       <footer className="mt-20 text-center text-metal-silver/60 text-sm">
-        <p className="mb-2">© 2025 Rainer Moltabo. Built with React & Vite.</p>
+        <p className="mb-2">© 2025 Rainer Montalvo. Built with React & Vite.</p>
         <div className="flex justify-center gap-4 items-center flex-wrap">
           <a
             href="https://github.com/blue201229"
@@ -135,7 +135,7 @@ const Contact = () => {
           </a>
           <span className="text-metal-silver/40">•</span>
           <a
-            href="https://dev.to/rainer_montalbo_2026"
+            href="https://dev.to/rainer_montalvo_2026"
             target="_blank"
             rel="noopener noreferrer"
             className="text-metal-silver/60 hover:text-metal-bronze transition-colors flex items-center gap-1"
