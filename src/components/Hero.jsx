@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaGithub, FaDiscord, FaTelegram } from 'react-icons/fa'
+import { FaGithub,  FaTelegram } from 'react-icons/fa'
 
 const Hero = () => {
   return (
@@ -82,16 +82,6 @@ const Hero = () => {
             </div>
           </a>
           
-          <a
-            href="https://discord.com/users/blue_201229"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative"
-          >
-            <div className="relative bg-black border border-metal-silver/70 rounded-full p-3 hover:bg-metal-silver/10 transition-colors duration-200">
-              <FaDiscord className="text-metal-silver text-2xl" />
-            </div>
-          </a>
           
           <a
             href="https://t.me/fan_1229"

@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaGithub, FaDiscord, FaTelegram, FaCode } from 'react-icons/fa'
+import { FaGithub, FaTelegram, FaCode } from 'react-icons/fa'
 
 const Contact = () => {
   const contactMethods = [
@@ -17,13 +17,7 @@ const Contact = () => {
       icon: <FaCode />,
       color: 'silver'
     },
-    {
-      name: 'Discord',
-      value: 'blue_201229',
-      link: 'https://discord.com/users/blue_201229',
-      icon: <FaDiscord />,
-      color: 'silver'
-    },
+
     {
       name: 'Telegram',
       value: '@fan_1229',
